@@ -5,12 +5,20 @@ const express = require('express');
 const cors = require('cors');
 const connection = require('./db'); //Import from db.js
 
+
+
 //////////////////////////////////////////////////////
 // INIT
 //////////////////////////////////////////////////////
 const app = express();
 console.log("process.env.PORT:", process.env.PORT);
 const PORT = process.env.PORT || 3000;
+
+//////////////////////////////////////////////////////
+// SETUP APP
+//////////////////////////////////////////////////////
+app.use(cors());
+app.use(express.json());
 
 //////////////////////////////////////////////////////
 // DISPLAY SERVER RUNNING
@@ -28,3 +36,8 @@ app.listen(PORT,()=> {
 //////////////////////////////////////////////////////
 const mainRoutes = require("./routes/mainRoutes");
 app.use("/", mainRoutes);
+
+
+app.get("/message", (req, res, next) => {
+    res.send(req.query);
+});
