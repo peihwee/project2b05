@@ -20,6 +20,8 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+app.use("/", express.static("../frontend-react/build"));
+
 //////////////////////////////////////////////////////
 // DISPLAY SERVER RUNNING
 //////////////////////////////////////////////////////
@@ -35,7 +37,7 @@ app.listen(PORT,()=> {
 // SETTING MAIN ROUTES
 //////////////////////////////////////////////////////
 const mainRoutes = require("./routes/mainRoutes");
-app.use("/", mainRoutes);
+app.use("/api", mainRoutes);
 
 
 app.get("/message", (req, res, next) => {
