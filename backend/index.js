@@ -21,6 +21,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/", express.static("../frontend-react/build"));
+app.use("/old", express.static("../frontend"));
 
 //////////////////////////////////////////////////////
 // DISPLAY SERVER RUNNING
